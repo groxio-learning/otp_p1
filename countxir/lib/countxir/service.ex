@@ -1,3 +1,4 @@
+# Unused
 defmodule Countxir.Service do
   alias Countxir.Core
 
