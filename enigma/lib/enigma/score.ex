@@ -3,7 +3,8 @@ defmodule Enigma.Score do
   defstruct [:red, :white]
 
   def new(answer, move) do
-    %__MODULE__{red: reds(answer, move), white: whites(answer, reds(answer, move), misses(answer, move))} |> print_score()
+    %__MODULE__{red: reds(answer, move), white: whites(answer, reds(answer, move), misses(answer, move))}
+    |> print_score()
   end
 
   defp reds(answer, move) do
