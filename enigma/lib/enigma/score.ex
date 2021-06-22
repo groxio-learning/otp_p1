@@ -3,7 +3,7 @@ defmodule Enigma.Score do
   defstruct [:red, :white]
 
   def new(answer, move) do
-    %__MODULE__{red: reds(answer, move), white: whites(answer, reds(answer, move), misses(answer, move))}
+    %__MODULE__{red: reds(answer, move), white: whites(answer, reds(answer, move), misses(answer, move))} |> print_score()
   end
 
   defp reds(answer, move) do
@@ -16,6 +16,12 @@ defmodule Enigma.Score do
 
   defp whites(answer, red, miss) do
     Enum.count(answer) - red - miss
+  end
+
+  def print_score(%{red: red_count, white: white_count}) do
+    List.duplicate("R", red_count)
+    |> Kernel.++(List.duplicate("W", white_count))
+    |> Enum.join(" ")
   end
 
 end
