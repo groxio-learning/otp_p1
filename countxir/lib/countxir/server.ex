@@ -7,6 +7,7 @@ defmodule Countxir.Server do
     GenServer.start_link(__MODULE__, num)
   end
 
+  @spec inc(atom | pid | {atom, any} | {:via, atom, any}) :: :ok
   def inc(counter) do
     GenServer.cast(counter, :inc)
   end
@@ -18,7 +19,6 @@ defmodule Countxir.Server do
   def read(counter) do
     GenServer.call(counter, :read)
   end
-
 
   #Server
   def init(num) do
