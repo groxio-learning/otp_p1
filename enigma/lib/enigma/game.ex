@@ -22,10 +22,10 @@ defmodule Enigma.Game do
     rows =
       game.moves
       |> Enum.map(fn move -> row(move, game.answer) end)
-      %{rows: rows, status: status(game)}
+      ~s<#{Enum.join(rows, "\n")}\n#{status(game)}>
   end
 
   def row(move, answer) do
-    %{move: move, score: Score.new(answer, move) |> Score.render_score}
+    ~s<#{Enum.join(move, " | ")}   #{Score.new(answer, move) |> Score.render_score}\n>
   end
 end

@@ -1,6 +1,15 @@
-defmodule Enigma.Server do
+defmodule Enigma do
   use GenServer
   alias Enigma.Game
+
+  def start_link(starting_value) do
+    GenServer.start_link(__MODULE__, starting_value, name: __MODULE__)
+  end
+
+  def guess(game \\ __MODULE__, guess) do
+    GenServer.call(game, {:guess, guess})
+    |> IO.puts
+  end
 
   def init(starting_value) do
     {:ok, Game.new(starting_value || Enum.take_random(1..8, 4)) }
