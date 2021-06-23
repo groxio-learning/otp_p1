@@ -20,7 +20,7 @@ defmodule Enigma.Score do
     answer_count - red - miss
   end
 
-  def print_score(%{red: red_count, white: white_count}) do
+  def render_score(%{red: red_count, white: white_count} = _score) do
     List.duplicate("R", red_count)
     |> Kernel.++(List.duplicate("W", white_count))
     |> Enum.join(" ")

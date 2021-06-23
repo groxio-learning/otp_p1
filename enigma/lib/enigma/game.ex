@@ -26,6 +26,6 @@ defmodule Enigma.Game do
   end
 
   def row(move, answer) do
-    %{move: move, score: Score.new(answer, move)}
+    %{move: move, score: Score.new(answer, move) |> Score.render_score}
   end
 end
