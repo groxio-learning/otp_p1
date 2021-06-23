@@ -9,11 +9,12 @@ defmodule Enigma.Application do
   def start(_type, _args) do
     children = [
       # Starts a worker by calling: Enigma.Worker.start_link(arg)
-      {Enigma, {nil, :bruce}},
-      {Enigma, {nil, :veera}},
-      {Enigma, {nil, :brad}},
-      {Enigma, {nil, :marcos}},
-      {Enigma, {nil, :nariman}}
+      {DynamicSupervisor, strategy: :one_for_one, name: :sup}
+      # {Enigma, {nil, :bruce}},
+      # {Enigma, {nil, :veera}},
+      # {Enigma, {nil, :brad}},
+      # {Enigma, {nil, :marcos}},
+      # {Enigma, {nil, :nariman}}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

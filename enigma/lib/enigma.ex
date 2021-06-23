@@ -16,6 +16,10 @@ defmodule Enigma do
     %{id: name, start: {Enigma, :start_link, [{nil, name}]}}
   end
 
+  def play(name) do
+    DynamicSupervisor.start_child(:sup, {Enigma, {nil, name}})
+  end
+
   def init(starting_value) do
     {:ok, Game.new(starting_value || Enum.take_random(1..8, 4)) }
   end
