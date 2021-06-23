@@ -3,6 +3,7 @@ defmodule Enigma do
   alias Enigma.Game
 
   def start_link(starting_value) do
+    IO.puts("Make a guess (e.g. Enigma.guess([1,2,3,4])")
     GenServer.start_link(__MODULE__, starting_value, name: __MODULE__)
   end
 

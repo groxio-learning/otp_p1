@@ -9,7 +9,7 @@ defmodule Enigma.Application do
   def start(_type, _args) do
     children = [
       # Starts a worker by calling: Enigma.Worker.start_link(arg)
-      # {Enigma.Worker, arg}
+      {Enigma, nil}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
